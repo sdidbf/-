@@ -1,0 +1,27 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void backtrack(int n, int r, vector<int>& path){
+    if(path.size() == r){
+        for(int i=0; i<path.size(); i++){
+            cout<<path[i]<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    for(int i=path.empty()?1:path.back()+1; i<=n; i++){
+        path.push_back(i);
+        backtrack(n, r, path);
+        path.pop_back();
+    }
+}
+
+int main(){
+    int n, r;
+    cout<<"请输入n和r：";
+    cin>>n>>r;
+    vector<int> path;
+    backtrack(n, r, path);
+    return 0;
+}
